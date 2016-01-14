@@ -14,8 +14,8 @@ app.get('/', function(req, res) {
 });
 
 
-app.post('/endpoint', function(req, res){
-	var obj = {};
+app.post('/json', function(req, res){
+	// var obj = {};
 	console.log('body: ' + JSON.stringify(req.body));
 	res.send(req.body);
 });

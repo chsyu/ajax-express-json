@@ -16,12 +16,28 @@
         type: 'POST',
         data: JSON.stringify(data),
         contentType: 'application/json',
-        url: '/endpoint',
+        url: '/json',
         success: function(data) {
-          console.log('success');
-          console.log(JSON.stringify(data));
+          // console.log('success');
+          // console.log(JSON.stringify(data));
           $("h1").html((data["message"]));
         }
+      });
+
+      fetch('/json', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: 'Hubot',
+          login: 'hubot'
+        })
+      }).then(function(response) {
+        return response.json()
+      }).then(function(json) {
+        $("h2").html((json["name"]));
       });
     });
   });
@@ -30,5 +46,6 @@
 <body>
   <div id="select_div"><a href="#" id="select_link">Test</a></div>
   <h1></h1>
+  <h2></h2>
 </body>
 </html>
